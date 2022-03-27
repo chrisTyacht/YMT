@@ -144,6 +144,11 @@ contract YachtMasterToken is ERC20, ERC20Snapshot, Ownable {
         excludedFromFees[user] = false;
     }
 
+    //Function to burn tokens
+    function burn(uint256 amount) {
+        _burn(msg.sender, amount); 
+    }
+
     // Use this function to control whether to use PinkAntiBot or not instead
     // of managing this in the PinkAntiBot contract
     function setEnableAntiBot(bool _enable) external onlyOwner {
