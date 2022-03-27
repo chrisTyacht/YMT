@@ -1,0 +1,33 @@
+dependencies: 
+    - OpenZeppelin/openzeppelin-contracts@4.4.1
+
+compiler:
+  solc:
+    optimizer:
+      enabled: true
+      runs: 200
+    remappings: 
+      - '@openzeppelin=OpenZeppelin/openzeppelin-contracts@4.4.1'
+
+dotenv: .env
+
+wallets:
+  from_key: ${PRIVATE_KEY}
+  from_key_2: ${PRIVATE_KEY_2}
+  from_key_3: ${PRIVATE_KEY_3}
+  from_key_4: ${PRIVATE_KEY_4}
+  from_key_5: ${PRIVATE_KEY_5}
+  from_key_6: ${PRIVATE_KEY_6}
+
+networks:
+  binance-testnet:
+    pancakeswap_router: '0x9Ac64Cc6e4415144C455BD8E4837Fea55603e5c3'
+    pinkAntiBot: '0xbb06F5C7689eA93d9DeACCf4aF8546C4Fe0Bf1E5'
+
+  bsc-test:
+    pancakeswap_router: '0x9Ac64Cc6e4415144C455BD8E4837Fea55603e5c3'
+    pinkAntibot: '0xbb06F5C7689eA93d9DeACCf4aF8546C4Fe0Bf1E5'
+
+  bsc-main:
+    pancakeswap_router: '0x10ED43C718714eb63d5aA57B78B54704E256024E'
+    pinkAntiBot: '0x8EFDb3b642eb2a20607ffe0A56CFefF6a95Df002'
