@@ -20,7 +20,7 @@ PROD = False
 def deploy_yacht_master(yachtMasterWalletAddress=None, marketingWalletAddress=None, developerWalletAddress=None, liquidityWalletAddress=None, tobeburntWalletAddress=None, airDropWalletAddress=None, burnWalletAddress=None):
     
     currNetwork = network.show_active()
-    if PROD and currNetwork in config["networks"] and "pancakeswap_router" in config["networks"][currNetwork]:
+    if PROD and currNetwork in config["networks"] and "pancakeswap_router" and "pinkAntiBot" in config["networks"][currNetwork]:
         yachtMasterWalletAddress = PROD_YACHT_MASTER_ADDRESS
         marketingWalletAddress = PROD_MARKETING_ADDRESS
         developerWalletAddress = PROD_DEVELOPER_ADDRESS
@@ -52,8 +52,8 @@ def deploy_yacht_master(yachtMasterWalletAddress=None, marketingWalletAddress=No
         pancakeSwapRouterAddress = config["networks"][currNetwork]["pancakeswap_router"]
         
     if currNetwork in config["networks"] and "pinkAntiBot" in config["networks"][currNetwork]:
-        pinkAntiBotAddress = config["networks"][currNetwork]["pinkAntibot"]
-   
+        pinkAntiBotAddress = config["networks"][currNetwork]["pinkAntiBot"]
+
     yachtMasterToken = YachtMasterToken.deploy(
         INITIAL_SUPPLY,
         yachtMasterWalletAddress,

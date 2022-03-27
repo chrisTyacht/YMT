@@ -149,18 +149,13 @@ contract YachtMasterToken is ERC20, ERC20Snapshot, Ownable {
     function setEnableAntiBot(bool _enable) external onlyOwner {
         antiBotEnabled = _enable;
     }
-    
-    // Internal Transfer function override to collect taxes only on Swap    
+ 
+    // Internal Transfer function override to collect taxes only on Swap.   
     function _transfer(address sender, address recipient, uint256 amount) internal virtual override {
-
+        
         //when to collect taxes      
         if((sender == uniswapPair || recipient == uniswapPair) && !excludedFromFees[sender] && !excludedFromFees[recipient]) {
-            
-            // Only use PinkAntiBot if this state is true
-            if (antiBotEnabled) {
-            pinkAntiBot.onPreTransferCheck(sender, recipient, amount);
-            }
-
+                        
             //Investor cannot have more than 2% of total supply
             if(sender == uniswapPair && !excludedFromFees[sender] && !excludedFromFees[recipient]) {
                 require((balanceOf(recipient) + amount) < (totalSupply() / 76), "You can't have more than 2% of the total supply.");                                
@@ -243,11 +238,13 @@ contract YachtMasterToken is ERC20, ERC20Snapshot, Ownable {
     }
 
     // The following functions are overrides required by Solidity.
-
-    function _beforeTokenTransfer(address from, address to, uint256 amount)
-        internal
-        override(ERC20, ERC20Snapshot)
-    {
+    // Enabling antibot from Pinksale
+    function _beforeTokenTransfer(address from, address to, uint256 amount) internal override(ERC20, ERC20Snapshot) {
+        // Only use PinkAntiBot if this state is true
+        if (antiBotEnabled) {
+            pinkAntiBot.onPreTransferCheck(from, to, amount);
+        }
+        
         super._beforeTokenTransfer(from, to, amount);
     }
 }

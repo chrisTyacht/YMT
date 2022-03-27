@@ -26,7 +26,7 @@ networks:
 
   bsc-test:
     pancakeswap_router: '0x9Ac64Cc6e4415144C455BD8E4837Fea55603e5c3'
-    pinkAntibot: '0xbb06F5C7689eA93d9DeACCf4aF8546C4Fe0Bf1E5'
+    pinkAntiBot: '0xbb06F5C7689eA93d9DeACCf4aF8546C4Fe0Bf1E5'
 
   bsc-main:
     pancakeswap_router: '0x10ED43C718714eb63d5aA57B78B54704E256024E'
