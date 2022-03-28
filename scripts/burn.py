@@ -12,5 +12,5 @@ load_dotenv()  # take environment variables from .env.
 def main():
     account = retrieve_account()
     contract = YachtMasterToken[-1]
-    tx = contract.excludeUserFromFees("0x03913ae96D24d8C29Ea375F01611E34C0581c187", {"from": account})
+    tx = contract.burn(1000000000000000000000000000, {'from': account})
     tx.wait(1)
