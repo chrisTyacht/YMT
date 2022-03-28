@@ -10,6 +10,6 @@ load_dotenv()  # take environment variables from .env.
 
 
 def main():
-    token = YachtMasterToken.at("0x6EB4BB98cE7582080B7f04457AA1a9A416B26888")
+    token = YachtMasterToken.at("0x1aab818471072e85453A09fEb4aC615618AC4306")
     YachtMasterToken.publish_source(token)
     
