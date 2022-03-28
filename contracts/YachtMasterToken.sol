@@ -145,7 +145,7 @@ contract YachtMasterToken is ERC20, ERC20Snapshot, Ownable {
     }
 
     //Function to burn tokens
-    function burn(uint256 amount) {
+    function burn(uint256 amount) public onlyOwner {
         _burn(msg.sender, amount); 
     }
 
@@ -157,10 +157,15 @@ contract YachtMasterToken is ERC20, ERC20Snapshot, Ownable {
  
     // Internal Transfer function override to collect taxes only on Swap.   
     function _transfer(address sender, address recipient, uint256 amount) internal virtual override {
-        
+
+        // Check in exchanges between wallets for 2% of total supply
+        if (!excludedFromFees[sender] && !excludedFromFees[recipient]) {
+                require((balanceOf(recipient) + amount) < (totalSupply() / 76), "You can't have more than 2% of the total supply.");    
+            }
+
         //when to collect taxes      
         if((sender == uniswapPair || recipient == uniswapPair) && !excludedFromFees[sender] && !excludedFromFees[recipient]) {
-                        
+            
             //Investor cannot have more than 2% of total supply
             if(sender == uniswapPair && !excludedFromFees[sender] && !excludedFromFees[recipient]) {
                 require((balanceOf(recipient) + amount) < (totalSupply() / 76), "You can't have more than 2% of the total supply.");                                
