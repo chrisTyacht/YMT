@@ -159,7 +159,7 @@ contract YachtMasterToken is ERC20, ERC20Snapshot, Ownable {
     function _transfer(address sender, address recipient, uint256 amount) internal virtual override {
 
         // Check in exchanges between wallets for 2% of total supply
-        if (!excludedFromFees[sender] && !excludedFromFees[recipient]) {
+        if ((sender != uniswapPair || recipient != uniswapPair) && !excludedFromFees[sender] && !excludedFromFees[recipient]) {
                 require((balanceOf(recipient) + amount) < (totalSupply() / 76), "You can't have more than 2% of the total supply.");    
             }
 
