@@ -13,3 +13,5 @@
 💬 Discord: https://discord.gg/JVJEcNCHY5
 
 🇷 Reddit: https://www.reddit.com/r/YACHT_MASTER_DAO/
+
+📨 Telegram: https://t.me/+Dyc4loMu9CtmZWE0
