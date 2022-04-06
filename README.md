@@ -4,7 +4,7 @@
 📖https://yachtmaster.gitbook.io/yacht-master-dao-project/
 
 # Social:
-🌐 Website:  coming soon
+🌐 Website:  https://yachtmastertoken.online
 
 📄  Medium: https://medium.com/@chrisTyacht/yacht-master-dao-d0ba9734403b
 
